@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Python 아빠
 # 아빠로서 가장 중요한 priority 는 무엇??
 father = {
