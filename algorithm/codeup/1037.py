@@ -1,0 +1,1 @@
+print ("{:c}".format(int(input())))
