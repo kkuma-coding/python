@@ -1,9 +1,8 @@
-val = 75254
-size = len("{:d}".format(val))
+val = int(input())
+valStr = "{}".format(val)
+size = len(valStr)
 
-list = []
-dividor = 10
-for x in range(0, size-1):
-    list.append(int(val / 10000) * 10000)
-    val = val - list[len(list)-1]
-    print (val)
+for i in range(0, size):
+    print("[", end="")
+    print (int(valStr[i])*(10**(size-i-1)), end="")
+    print("]")
