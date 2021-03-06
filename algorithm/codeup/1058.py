@@ -12,3 +12,4 @@ if b == 0:
 else:
     b = True
 
+print (a and b)
