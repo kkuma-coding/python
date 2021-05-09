@@ -24,7 +24,7 @@ for i in range(people):
     score = int(score)
     scoreList.append([name, score])
 
-sortedScoreList = sorted(scoreList, key=lambda scoreList: scoreList[1], reverse=True)
+sortedScoreList = sorted(scoreList, key=lambda x: x[1], reverse=True)
 # print(sortedScoreList)
 for j in range(max):
     print(sortedScoreList[j][0])
