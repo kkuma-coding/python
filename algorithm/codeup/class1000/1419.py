@@ -5,7 +5,28 @@
 
 소문자 love가 몇 번 나오는지 출력한다.
 '''
+count = 0
+
+t = "love"
+t_len = len(t)
 value = "love lovely"
-value_len = len(value)
-print (value_len)
-print(value.find("love", 0))
+words = value.split()
+
+test = "lovely"
+for i in range(len(test)):
+    for j in range(t_len):
+        if (t[j] == test[i]):
+            
+
+
+'''
+for w in words:
+    if (t_len > len(w)):
+        continue
+
+    for i in range(len(w)):
+        for j in range(t_len):
+            if (w[i] == t[j]):
+
+print(count)
+'''
