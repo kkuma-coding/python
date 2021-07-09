@@ -24,7 +24,8 @@ zipped = zip ([int(d) for d in data],
 
 mtx = []
 for z in zipped:
-    mtx.append(list(z))
+    # mtx.append(list(z))
+    mtx.append(z)
 # print(mtx)
 
 mtx.sort(key=lambda x:x[0])
