@@ -66,6 +66,12 @@ stack.appendleft((0, 0, 0))
 while stack:
     rr, cc, w = stack.pop()
 
+    # 나는 문제 정의에 따라 "최소값"을 찾아가고 있다.
+    # map 은 value_map, data 두 개이고, 계산 결과 반영은 value_map
+    # 기껏 value_map 에 낮은 candidate 을 비용들여서 얻어둬 놓고,
+    # 즉, 애써 얻어둔 value_map[rr][cc] 를 w로 덮어쓰지 말라는 것.
+    # 그럼 똑같은 계산을 다시 해야 하는 일이 발생한다.
+    # w는 data[rr][cc] 값이 stack 을 거쳐서 치환되어 전달된 값이다.
     if value_map[rr][cc] > w: continue
     if rr == count -1 and cc == count -1: continue
 
