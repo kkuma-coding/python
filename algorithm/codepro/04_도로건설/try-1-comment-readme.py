@@ -73,8 +73,12 @@ while stack:
     # 그럼 똑같은 계산을 다시 해야 하는 일이 발생한다.
     # w는 data[rr][cc] 값이 stack 을 거쳐서 치환되어 전달된 값이다.
     if value_map[rr][cc] > w: continue
-    if rr == count -1 and cc == count -1: continue
 
+    # rr, cc 는 근거지 position 이다.
+    # while 내에서 stack 에 추가된 걸 꺼내가면서 candidate 을 하나씩 검토하는 식인데,
+    # 최종 답안을 구해야 할 point에서 발현되는 stack.append() 로 인한 계산은 할 필요 없다.
+    # 최종 종착지 답안지에서 퍼져나가는 stack 추가 propagation 은 최종 답안을 망가뜨리는 일 뿐이다.
+    if rr == count -1 and cc == count -1: continue
 
     # r,c combination
     direction = [(0,-1),(0,1),(-1,0),(1,0)]
