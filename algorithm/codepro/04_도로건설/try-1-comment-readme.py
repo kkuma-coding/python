@@ -60,11 +60,11 @@ print("-------------------------------")
 """
 
 
-stack = deque()
-stack.appendleft((0, 0, 0))
+queue = deque()
+queue.appendleft((0, 0, 0))
 
-while stack:
-    rr, cc, w = stack.pop()
+while queue:
+    rr, cc, w = queue.pop()
 
     # 나는 문제 정의에 따라 "최소값"을 찾아가고 있다.
     # map 은 value_map, data 두 개이고, 계산 결과 반영은 value_map
@@ -88,7 +88,7 @@ while stack:
             if value_map[nr][nc] > data[rr][cc] + w:
                 # print (f"[{rr}:{cc}] -> [{nr}:{nc}] {value_map[nr][nc]}")
                 value_map[nr][nc] = data[rr][cc] + w
-                stack.appendleft((nr, nc, value_map[nr][nc]))
+                queue.appendleft((nr, nc, value_map[nr][nc]))
 
 """
 for i in range(count):
