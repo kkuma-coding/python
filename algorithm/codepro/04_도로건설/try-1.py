@@ -37,12 +37,27 @@ import sys
 from collections import deque
 readl = sys.stdin.readline
 count = int(readl().strip())
-
+INF = 987654321
 data = []
+value_map = []
 for i in range(count):
     line = readl().strip()
     list_line = [int(c) for c in line]
     data.append(list_line)
+    value_map.append([INF]*count)
+
+# value_map = data.copy()
+value_map[0][0] = 0
+
+"""
+###### debugging purpose
+for i in range(count):
+    print(*data[i])
+print("-------------------------------")
+for i in range(count):
+    print(*value_map[i])
+print("-------------------------------")
+"""
 
 
 stack = deque()
@@ -51,13 +66,23 @@ stack.appendleft((0, 0, 0))
 while stack:
     rr, cc, w = stack.pop()
 
+    if value_map[rr][cc] > w: continue
+    if rr == count -1 and cc == count -1: continue
+
+
     # r,c combination
     direction = [(0,-1),(0,1),(-1,0),(1,0)]
     for r, c, in direction:
-        # print (f"[r:{r}, c:{c}]")
         nr, nc = rr+r, cc+c
-        if data[nr][nc] > data[rr][cc] + w:
-            data[nr][nc] = data[rr][cc] + w
-            stack.appendleft((nr, nc, data[nr][nc]))
+        if 0 <= nr < count and 0 <= nc < count:
+            if value_map[nr][nc] > data[rr][cc] + w:
+                # print (f"[{rr}:{cc}] -> [{nr}:{nc}] {value_map[nr][nc]}")
+                value_map[nr][nc] = data[rr][cc] + w
+                stack.appendleft((nr, nc, value_map[nr][nc]))
 
-print(data[count-1][count-1])
+"""
+for i in range(count):
+    print(*value_map[i])
+"""
+
+print(value_map[count-1][count-1])
