@@ -1,38 +1,23 @@
-"""
-https://codeup.kr/problem.php?id=4514
+stack = []
 
-<input>
-8 3
-5 4 2 6 9 3 8 7
+count = 8
+group = 3
 
-각 그룹의 합 중 최대값이 최소가 되도록 M개의 그룹으로 나누었을 때,
-그 최대값을 출력하는 프로그램을 작성하시오.
-"""
-count, group = map(int, input().split())
-marbles = list(map(int, input().split()))
-
-# combination data
-combi = []
-def combi_gen(ary, remain, depth, group):
-    if sum(ary) >= remain:
+def combi_gen(val, dep, cur_dep):
+    global count
+    global group
+    global stack
+    if cur_dep > 0 and val > 0:
+        for i in range(1, val):
+            stack.append(i)
+            combi_gen(val-i, cur_dep-1)
+            stack.pop()
+    elif cur_dep <= 0:
+        stack.append(count - sum(stack))
+        print (*stack)
+        stack.pop()
         return
-    if depth >= group:
-        return
-    for i in range(1, remain+1):
-        # if i +
-        ary.append(i)
-        combi_gen(ary, remain-sum(ary), depth+1, group)
 
-combi_gen(combi, count, 1, group)
+for i in range(1, count-group+2):
+    combi_gen(count, group)
 
-print(combi)
-
-
-
-d = []
-for r in range(len(combi)+1):
-    d.append(list())
-    for c in range(group+1):
-        d.append(0)
-
-# recurrence relation??
